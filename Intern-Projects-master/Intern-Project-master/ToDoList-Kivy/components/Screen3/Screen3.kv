@@ -1,0 +1,27 @@
+<Screen3>:
+    ScrollView:
+        id:sc
+        BoxLayout:
+            id:Scroll
+            size_hint_y:None
+            height:self.minimum_height
+            orientation:"vertical"
+
+
+    BoxLayout:
+
+        id:first
+        orientation:"horizontal"
+        size_hint:1,.1
+        height:150
+
+        Button:
+            id: buton1
+            text : "BackHome"
+            size_hint : 0.5,1
+            pos : 100,100
+            on_release:app.root.current = "Screen1"
+
+
+
+

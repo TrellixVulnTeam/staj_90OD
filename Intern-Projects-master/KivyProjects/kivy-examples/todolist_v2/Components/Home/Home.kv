@@ -1,0 +1,172 @@
+#:import Factory kivy.factory.Factory
+<FlatButton@ButtonBehavior+Label>:
+<MyPopup@Popup>:
+    id : popup
+    size_hint: .5,.5
+
+
+    BoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+
+            Label:
+                Image:
+                    source: "warning.png"
+                    pos:self.parent.pos
+                    size:self.parent.size
+        BoxLayout:
+            padding: 30
+            spacing: 10
+            orientation: "horizontal"
+
+            Button:
+                id: root.popup_id
+                text: "Delete"
+                on_release: root.Remove_widget(self), root.dismiss()
+            Button:
+                id:root.popup_id
+                text: "Done"
+                on_release: root.Do_popup_task(self), root.dismiss()
+
+
+<Home>:
+    BoxLayout:
+
+
+        id: home
+        orientation: "vertical"
+        spacing: 5
+        #space_x: self.size[0]/2
+        canvas.before:
+            Color:
+                rgba: (1,1,1,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        ##########HEADER#######
+        BoxLayout:
+            id: header
+            size_hint_y: None
+            height: 50
+            canvas.before:
+                Color:
+                    rgba: (.85,.7,.2,1)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            Label:
+                text: "TO DO LIST"
+                font_size: "20sp"
+                bold: True
+                size_hint_x: 1
+
+
+        ####################################
+        ScrollView:
+            canvas.before:
+                Color:
+                    rgba: (1,1,.2,.2)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            BoxLayout:
+                id: add_field
+                size_hint_y: None
+                height: self.minimum_height
+
+                orientation: 'vertical'
+
+                spacing: 2   #Spaces between childs
+
+
+        #####################################################
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: (1,1,.2,.2)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            id: input_field
+            size_hint_y: None
+            height: 80
+
+            TextInput:
+                id: task_input
+                focus: True
+                on_text_validate: time_input.focus = True
+                size_hint_x: .4
+                multiline: False
+                hint_text: "Task..."
+            TextInput:
+                id: time_input
+                hint_text: "Date type must be hh:mm"
+
+                size_hint_x: .4
+                multiline: False
+                on_text_validate: root.addWidget()
+
+            FlatButton:
+                font_size: "40sp"
+                size_hint_x: .2
+
+                on_release: root.addWidget()
+                id: button1
+                color: 1,0.5,0.5,1
+                Image:
+                    source: "add.png"
+                    size: self.parent.size
+                    pos: self.parent.pos
+
+
+
+    #######################################################
+<EachTask>:
+    rgba: root.rgba
+    size_hint_y: None
+    height: 50
+    id: each_task
+
+
+    BoxLayout:
+        BoxLayout:
+            orientation: "horizontal"
+
+
+            Label:
+
+                size_hint_x: .4
+                font_size: "25sp"
+                id: label
+                canvas.before:
+                    Color:
+                        rgba: root.rgba
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+
+        FlatButton:
+            id: button
+            size_hint_x: .1
+            on_release: root.Remove_widget(self)
+            #on_release: app.root.ids.add_field.remove_widget(root)
+            Image:
+                source: "remove.png"
+                size: self.parent.size
+                pos: self.parent.pos
+        FlatButton:
+            size_hint_x: .1
+            on_release: root.Do_Task(self)
+            Image:
+
+                source: "done.png"
+                size: self.parent.size
+                pos: self.parent.pos
+
+
+
+
+

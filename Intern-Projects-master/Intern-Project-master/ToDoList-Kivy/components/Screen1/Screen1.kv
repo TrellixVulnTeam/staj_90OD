@@ -1,0 +1,33 @@
+<Screen1>:
+    BoxLayout:
+        id:first
+        orientation:"horizontal"
+        size_hint:1,.1
+        height:150
+
+        Button:
+            id: buton1
+            text : "Add Task"
+            size_hint : 0.5,1
+            pos : 100,100
+            on_release:app.root.current = "Screen2"
+        #Image:
+
+         #   size_hint : 0.2,1
+          #  source: 'resim.png'
+        Button:
+            id: buton2
+            text : "Remove Task "
+            size_hint : 0.5,1
+            pos : 100,100
+            on_release:app.root.current = "Screen3"
+
+
+
+
+
+
+
+
+
+

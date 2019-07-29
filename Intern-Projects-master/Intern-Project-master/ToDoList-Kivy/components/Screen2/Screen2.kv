@@ -1,0 +1,33 @@
+<Screen2>:
+    BoxLayout:
+
+        orientation:"vertical"
+        TextInput:
+            hint_text:'Write Events to add'
+            id : input1
+            font_size : 30
+        TextInput:
+            hint_text:'How many hours needed?'
+            id : input2
+            font_size : 30
+
+
+
+        Button:
+            id: buton4
+            text : "Add Task"
+            on_press:root.add_event()
+        Button:
+            id: buton5
+            text : "BackHome"
+            on_release:app.root.current = "Screen1"
+
+<popupcls>:
+    size_hint: .4,.3
+    auto_dismiss: False
+    title: "Missing"
+    size:(600,600)
+    Button:
+        text: "Date should be integer"
+        on_press: root.dismiss()
+
